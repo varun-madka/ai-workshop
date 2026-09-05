@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #17191c;
   --muted: #57606a;
   --card: #ffffff;
+  --card-hover: #f2f4f8;
   --card-border: #e7e9ec;
   --primary: #1b5fff;
   --primary-contrast: #ffffff;
@@ -12,30 +15,31 @@
   --ring: rgb(27 95 255 / 0.5);
 }
 
+.dark {
+  --background: #0b0e14;
+  --foreground: #e8eaee;
+  --muted: #98a2b3;
+  --card: #12161f;
+  --card-hover: #1a2130;
+  --card-border: #232a37;
+  --primary: #6d9dff;
+  --primary-contrast: #0b0e14;
+  --primary-soft: #1a2540;
+  --ring: rgb(109 157 255 / 0.5);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
   --color-card-border: var(--card-border);
   --color-primary: var(--primary);
   --color-primary-contrast: var(--primary-contrast);
   --color-primary-soft: var(--primary-soft);
   --font-sans: var(--font-inter-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b0e14;
-    --foreground: #e8eaee;
-    --muted: #98a2b3;
-    --card: #12161f;
-    --card-border: #232a37;
-    --primary: #6d9dff;
-    --primary-contrast: #0b0e14;
-    --primary-soft: #1a2540;
-  }
 }
 
 html {
