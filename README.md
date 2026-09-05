@@ -60,3 +60,4 @@ a production build and deployment to https://ai-workshop.vercel.app.
   explicitly out of scope for this phase).
 - No authentication, CMS, database, analytics, multiple routes, or PDF
   generation — all out of scope for phase 1.
+Deployment status tracked from GitHub deployment API.
