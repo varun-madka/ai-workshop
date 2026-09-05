@@ -24,8 +24,8 @@ certifications, education, and a footer with the current year.
 
 Per the workshop privacy requirements, this public site deliberately omits:
 
-- The phone number that appears in the resume (`+1 405 856-8439`) — no
-  `INCLUDE PHONE` override was provided.
+- The phone number that appears in the resume — no `INCLUDE PHONE` override
+  was provided, so it is omitted (its digits are not published here either).
 - No residential/street address appeared in the resume, so none is published.
   Location details shown are organization locations from employment/education.
 - The published email and LinkedIn URL are exactly the ones on the resume.
