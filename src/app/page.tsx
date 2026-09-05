@@ -15,6 +15,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import { ContactForm } from "@/components/contact-form";
+
 const navigation = [
   { label: "Workshops", href: "#workshops" },
   { label: "How it works", href: "#how-it-works" },
@@ -106,16 +108,16 @@ const testimonials = [
   },
 ];
 
-const risk = [
-  { label: "Template-driven and generic", okay: true },
-  { label: "Slide-heavy with no building", okay: true },
-  { label: "Theoretical, no working output", okay: true },
+const weAvoid = [
+  "Template-driven and generic",
+  "Slide-heavy with no building",
+  "Theoretical, no working output",
 ];
 
 const obstacles = [
-  { label: "Quick wins that don't scale", risk: true },
-  { label: "Pilot fatigue and spiralling costs", risk: true },
-  { label: "AI projects that stall after hype", risk: true },
+  "Quick wins that don't scale",
+  "Pilot fatigue and spiralling costs",
+  "AI projects that stall after hype",
 ];
 
 const plans = [
@@ -193,10 +195,12 @@ const faqs = [
 ];
 
 function SectionHeading({
+  id,
   eyebrow,
   title,
   description,
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   description?: string;
@@ -206,7 +210,10 @@ function SectionHeading({
       <p className="text-sm font-semibold tracking-wide text-primary uppercase">
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+      <h2
+        id={id}
+        className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+      >
         {title}
       </h2>
       {description ? (
@@ -331,6 +338,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="workshops-heading"
               eyebrow="Offerings"
               title="Workshops that go beyond the basics"
               description="Curated, hands-on sessions built around your team's goals and your real stack."
@@ -359,6 +367,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="how-it-works-heading"
               eyebrow="How it works"
               title="From first call to shipped prototype"
               description="A simple, repeatable process that keeps your team building — not watching."
@@ -385,23 +394,23 @@ export default function Home() {
               </p>
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <ul className="space-y-2 text-sm text-muted">
-                  {risk.map((item) => (
-                    <li key={item.label} className="flex items-start gap-2">
+                  {weAvoid.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
                       <CheckCircle2
                         aria-hidden="true"
                         className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500"
                       />
-                      <span>{item.label}</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
                 <ul className="space-y-2 text-sm text-muted">
                   {obstacles.map((item) => (
-                    <li key={item.label} className="flex items-start gap-2">
+                    <li key={item} className="flex items-start gap-2">
                       <span aria-hidden="true" className="mt-0.5 text-rose-500">
                         ×
                       </span>
-                      <span>{item.label}</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -417,6 +426,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="testimonials-heading"
               eyebrow="Testimonials"
               title="Teams that built, then shipped"
             />
@@ -459,6 +469,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="pricing-heading"
               eyebrow="Pricing"
               title="Simple plans that scale with your team"
               description="Transparent pricing. No per-seat surprises, no long-term lock-in."
@@ -535,6 +546,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="faq-heading"
               eyebrow="FAQ"
               title="Frequently asked questions"
             />
@@ -569,89 +581,12 @@ export default function Home() {
         >
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              id="contact-heading"
               eyebrow="Contact"
               title="Let's build something together"
               description="Tell us about your team and what you want to ship. We'll reply within one business day."
             />
-            <form className="mt-12 space-y-6 rounded-2xl border border-card-border bg-background p-6 sm:p-8">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    className="w-full rounded-lg border border-card-border bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-2 focus:outline-primary"
-                    placeholder="Ada Lovelace"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Work email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="w-full rounded-lg border border-card-border bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-2 focus:outline-primary"
-                    placeholder="you@company.com"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-sm font-medium"
-                >
-                  What do you want to build?
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full resize-y rounded-lg border border-card-border bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-2 focus:outline-primary"
-                  placeholder="We'd love to give our support team an AI copilot..."
-                />
-              </div>
-              <div>
-                <label className="flex items-start gap-3 text-sm text-muted">
-                  <input
-                    type="checkbox"
-                    name="newsletter"
-                    className="mt-0.5 h-4 w-4 rounded border-card-border text-primary focus:outline-2 focus:outline-primary"
-                  />
-                  <span>
-                    Also subscribe me to the AI Workshop newsletter — practical
-                    notes and builds, no spam.
-                  </span>
-                </label>
-              </div>
-              <AnchorLink href="#contact" className="w-full bg-primary text-primary-contrast hover:opacity-90">
-                Send message
-              </AnchorLink>
-              <p className="text-center text-xs leading-5 text-muted">
-                This is a static demo form. Email us at{" "}
-                <a
-                  href="mailto:hello@aiworkshop.example"
-                  className="font-medium text-primary underline-offset-2 hover:underline"
-                >
-                  hello@aiworkshop.example
-                </a>{" "}
-                to reach the team directly.
-              </p>
-            </form>
+            <ContactForm />
           </div>
         </section>
       </main>
